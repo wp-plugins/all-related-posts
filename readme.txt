@@ -6,16 +6,17 @@ Requires at least: 3.0
 Tested up to: 3.1
 Contributors: Maarten Swemmer
 
-Displays related / relevant posts based on search engine terms, current post and previously viewed posts.
+Displays some related / relevant posts based on search engine terms, current post and previously viewed posts.
 
 == Description ==
-The All Related Posts plugin is a simple behavioral targetting plugin. It provides a widget which will display relevant posts based on the user's behavior. It however does not create a user profile or impacts user privacy. 
+The All Related Posts plugin is a simple behavioral targetting plugin. It provides a widget which will display a specified number of relevant posts based on the user's behavior. It however does not create a user profile or impacts user privacy. 
 
 This plugin combines functionality from several other plugins that show related posts in one way or another. 
 
 It looks for related posts in the order indicated below until it has found a per widget specified number of relevant posts.
 
 The widget can be configured to show one or more of the following:
+
 1. **The first post a visitor came to on his previous visit**: This is based on the assumption that he previously followed a relevant link from a search engine or other website. If he returns now, he might again be interested in it.
 2. **Posts related to seach engine search terms (tags and categories)**: This is based on the assumption that tags and categories corresponding to a user's search terms are relevant.
 3. **Posts related to the shown post**: This is based on the assumption that tags and categories are indicative for related posts. Better tagging will result in better related posts.
