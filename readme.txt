@@ -17,10 +17,10 @@ It looks for related posts in the order indicated below until it has found a per
 
 The widget can be configured to show one or more of the following:
 
-1. **The first post a visitor came to on his previous visit**: This is based on the assumption that he previously followed a relevant link from a search engine or other website. If he returns now, he might again be interested in it.
-2. **Posts related to seach engine search terms (tags and categories)**: This is based on the assumption that tags and categories corresponding to a user's search terms are relevant.
-3. **Posts related to the shown post**: This is based on the assumption that tags and categories are indicative for related posts. Better tagging will result in better related posts.
-4. **Posts related to seach engine search terms (full post content)**: If your tags and categories do not correspond with a user's search terms, a full content search may result in other related posts. As this search is relatively database intensive, it is performed last. Make sure to add your blog domain name to the list of to be ignored terms in the widget, to prevent all posts with internal links to match.
+*   **The first post a visitor came to on his previous visit**: This is based on the assumption that he previously followed a relevant link from a search engine or other website. If he returns now, he might again be interested in it.
+*   **Posts related to seach engine search terms (tags and categories)**: This is based on the assumption that tags and categories corresponding to a user's search terms are relevant.
+*   **Posts related to the shown post**: This is based on the assumption that tags and categories are indicative for related posts. Better tagging will result in better related posts.
+*   **Posts related to seach engine search terms (full post content)**: If your tags and categories do not correspond with a user's search terms, a full content search may result in other related posts. As this search is relatively database intensive, it is performed last. Make sure to add your blog domain name to the list of to be ignored terms in the widget, to prevent all posts with internal links to match.
 
 Multiple widgets are supported, enabling you to show different groups of links for different scenarios with different titles.
 
