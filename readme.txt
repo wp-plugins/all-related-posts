@@ -32,6 +32,11 @@ If no relevant posts or pages are found, no widget is shown.
 4. Drag the widget to a sidebar.
 5. Edit the sidebar title and other settings if needed.
 
+== Screenshots ==
+
+1. Widget settings for All Related Posts widget
+2. Resulting widget
+
 == Changelog ==
 
 = 0.9 =
