@@ -4,7 +4,7 @@ Plugin Name: All Related Posts
 Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
 Description: Provides useful related links based on the visitor's browsing behavior
 Author: Maarten Swemmer
-Version: 0.9
+Version: 0.9.1
 Author URI: http://blog.bigcircle.nl
 */
 
@@ -29,7 +29,11 @@ function arp_set_cookie()
 		{
 			setcookie("arp_ls_fp", $_COOKIE['arp_ts_fp'], 0 , "/", $strippeddomain ); // this session
 		}
-		setcookie("arp_ts_fp", $uri, time()+15756926 , "/", $strippeddomain ); // the first page is only stored if the session cookie was not yet stored (which means it's the first page)
+		if ($request != '/') // if a user is coming to the home page, don't overwrite the previous cookie
+		{
+			setcookie("arp_ts_fp", $uri, time()+15756926 , "/", $strippeddomain ); // the first page is only stored if the session cookie was not yet stored (which means it's the first page)
+		}
+	
 	}
 	//get_bloginfo('url')
 }
@@ -227,7 +231,7 @@ class arp_related_posts extends WP_Widget {
 		
 		// typical query:
 		// SELECT wp_posts.ID, wp_terms.name from wp_posts, wp_terms, wp_term_relationships where (wp_posts.ID = wp_term_relationships.object_id) AND (wp_term_relationships.term_taxonomy_id = wp_terms.term_id ) AND (wp_posts.post_type='post' OR wp_posts.post_type='page') AND wp_posts.post_status = 'publish' AND wp_posts.ID <> 532 AND LCASE(wp_terms.name) = 'psychology' ORDER BY ID DESC 
-		$query = "SELECT wp_posts.ID from ".$wpdb->posts.", ".$wpdb->terms.", ".$wpdb->term_relationships ." where (".$wpdb->posts.".ID = ".$wpdb->term_relationships .".object_id) AND (".$wpdb->term_relationships .".term_taxonomy_id = ".$wpdb->terms.".term_id ) AND (".$wpdb->posts.".post_type='post' OR ".$wpdb->posts.".post_type='page') AND ".$wpdb->posts.".post_status = 'publish' "; 
+		$query = "SELECT ".$wpdb->posts.".ID from ".$wpdb->posts.", ".$wpdb->terms.", ".$wpdb->term_relationships ." where (".$wpdb->posts.".ID = ".$wpdb->term_relationships .".object_id) AND (".$wpdb->term_relationships .".term_taxonomy_id = ".$wpdb->terms.".term_id ) AND (".$wpdb->posts.".post_type='post' OR ".$wpdb->posts.".post_type='page') AND ".$wpdb->posts.".post_status = 'publish' "; 
 		$tags_where = array();
 		foreach ($tags as $k=>$v)
 		{
@@ -236,7 +240,7 @@ class arp_related_posts extends WP_Widget {
 		$tags_where_txt = join(' OR ', $tags_where);
 		if ($tags_where_txt != '') { $query .= ' AND ('.$tags_where_txt.') '; } else return $ret;
 		$thisid = get_the_ID();
-		$query .= "AND wp_posts.ID <> ".$thisid." ORDER BY ID DESC";
+		$query .= "AND ".$wpdb->posts.".ID <> ".$thisid." ORDER BY ID DESC";
 		
 		//echo $query;
 		
@@ -262,7 +266,7 @@ class arp_related_posts extends WP_Widget {
 		
 		// typical query:
 		// SELECT wp_posts.ID, wp_terms.name from wp_posts, wp_terms, wp_term_relationships where (wp_posts.ID = wp_term_relationships.object_id) AND (wp_term_relationships.term_taxonomy_id = wp_terms.term_id ) AND (wp_posts.post_type='post' OR wp_posts.post_type='page') AND wp_posts.post_status = 'publish' AND wp_posts.ID <> 532 AND LCASE(wp_terms.name) = 'psychology' ORDER BY ID DESC 
-		$query = "SELECT wp_posts.ID from ".$wpdb->posts.", ".$wpdb->terms.", ".$wpdb->term_relationships .", ".$wpdb->term_taxonomy." where (".$wpdb->posts.".ID = ".$wpdb->term_relationships .".object_id) AND (".$wpdb->term_relationships.".term_taxonomy_id = ".$wpdb->terms.".term_id ) AND (".$wpdb->terms.".term_id = ".$wpdb->term_taxonomy.".term_id) AND (".$wpdb->posts.".post_type='post' OR ".$wpdb->posts.".post_type='page') AND ".$wpdb->posts.".post_status = 'publish' "; 
+		$query = "SELECT ".$wpdb->posts.".ID from ".$wpdb->posts.", ".$wpdb->terms.", ".$wpdb->term_relationships .", ".$wpdb->term_taxonomy." where (".$wpdb->posts.".ID = ".$wpdb->term_relationships .".object_id) AND (".$wpdb->term_relationships.".term_taxonomy_id = ".$wpdb->terms.".term_id ) AND (".$wpdb->terms.".term_id = ".$wpdb->term_taxonomy.".term_id) AND (".$wpdb->posts.".post_type='post' OR ".$wpdb->posts.".post_type='page') AND ".$wpdb->posts.".post_status = 'publish' "; 
 		$tags_where = array();
 		foreach ($qs as $k=>$v)
 		{
@@ -271,7 +275,7 @@ class arp_related_posts extends WP_Widget {
 		$tags_where_txt = join(' OR ', $tags_where);
 		if ($tags_where_txt != '') { $query .= ' AND ('.$tags_where_txt.') '; } else return $ret;
 		$thisid = get_the_ID();
-		$query .= "AND wp_posts.ID <> ".$thisid." ORDER BY ".$wpdb->term_taxonomy.".taxonomy DESC, ID DESC";
+		$query .= "AND ".$wpdb->posts.".ID <> ".$thisid." ORDER BY ".$wpdb->term_taxonomy.".taxonomy DESC, ID DESC";
 		
 		//echo $query;
 		

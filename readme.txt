@@ -1,10 +1,10 @@
 === All Related Posts ===
 Tags: Google, Yahoo, Bing, AOL, Ask, Baidu, related posts, seo, search, tags, read posts, previous, behavioral targeting, related posts, relevant posts, pages
 Donate link: blog.bigcircle.nl
-Stable tag: 0.9
+Stable tag: 0.9.1
 Requires at least: 3.0
 Tested up to: 3.1
-Contributors: Maarten Swemmer
+Contributors: maartenjs
 
 Displays some related / relevant posts based on search engine terms, current post and previously viewed posts.
 
@@ -16,8 +16,7 @@ This plugin combines functionality from several other plugins that show related 
 It looks for related posts in the order indicated below until it has found a per widget specified number of relevant posts.
 
 The widget can be configured to show one or more of the following:
-
-*   **The first post a visitor came to on his previous visit**: This is based on the assumption that he previously followed a relevant link from a search engine or other website. If he returns now, he might again be interested in it.
+*   **The first post a visitor came to on a previous visit**: This is based on the assumption that he previously followed a relevant link from a search engine or other website. If he returns now, he might be looking for it again.
 *   **Posts related to seach engine search terms (tags and categories)**: This is based on the assumption that tags and categories corresponding to a user's search terms are relevant.
 *   **Posts related to the shown post**: This is based on the assumption that tags and categories are indicative for related posts. Better tagging will result in better related posts.
 *   **Posts related to seach engine search terms (full post content)**: If your tags and categories do not correspond with a user's search terms, a full content search may result in other related posts. As this search is relatively database intensive, it is performed last. Make sure to add your blog domain name to the list of to be ignored terms in the widget, to prevent all posts with internal links to match.
@@ -37,6 +36,9 @@ If no relevant posts or pages are found, no widget is shown.
 
 = 0.9 =
 * initial release 
+
+= 0.9.1 =
+* corrected an issue in one of the database queries. Now supports any wordpress database prefix.
 
 == Support ==
 To see how and that it works, do the following:
