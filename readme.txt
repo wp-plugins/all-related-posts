@@ -1,9 +1,9 @@
 === All Related Posts ===
 Tags: Google, Yahoo, Bing, AOL, Ask, Baidu, related posts, seo, search, tags, read posts, previous, behavioral targeting, related posts, relevant posts, pages
 Donate link: blog.bigcircle.nl
-Stable tag: 0.9.1
+Stable tag: 1.0
 Requires at least: 3.0
-Tested up to: 3.1
+Tested up to: 3.1.3
 Contributors: maartenjs
 
 Displays some related / relevant posts based on search engine terms, current post and previously viewed posts.
@@ -17,8 +17,8 @@ It looks for related posts in the order indicated below until it has found a per
 
 The widget can be configured to show one or more of the following:
 
-*   **The first post a visitor came to on a previous visit**: This is based on the assumption that he previously followed a relevant link from a search engine or other website. If he returns now, he might be looking for it again.
 *   **Posts related to seach engine search terms (tags and categories)**: This is based on the assumption that tags and categories corresponding to a user's search terms are relevant.
+*   **The first post a visitor came to on a previous visit**: This is based on the assumption that he previously followed a relevant link from a search engine or other website. If he returns now, he might be looking for it again.
 *   **Posts related to the shown post**: This is based on the assumption that tags and categories are indicative for related posts. Better tagging will result in better related posts.
 *   **Posts related to seach engine search terms (full post content)**: If your tags and categories do not correspond with a user's search terms, a full content search may result in other related posts. As this search is relatively database intensive, it is performed last. Make sure to add your blog domain name to the list of to be ignored terms in the widget, to prevent all posts with internal links to match.
 
@@ -41,10 +41,15 @@ If no relevant posts or pages are found, no widget is shown.
 == Changelog ==
 
 = 0.9 =
-* initial release 
+* Initial release 
 
 = 0.9.1 =
-* corrected an issue in one of the database queries. Now supports any wordpress database prefix.
+* Corrected an issue in one of the database queries. Now supports any wordpress database prefix.
+
+= 1.0 =
+* Improved algoritm to find the most relevant posts related to the current post.
+* Added translation support for Widget settings page. 
+* Added Dutch and Traditional Chinese translations
 
 == Support ==
 To see how and that it works, do the following:

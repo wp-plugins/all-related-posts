@@ -4,9 +4,13 @@ Plugin Name: All Related Posts
 Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
 Description: Provides useful related links based on the visitor's browsing behavior
 Author: Maarten Swemmer
-Version: 0.9.1
+Version: 1.0
 Author URI: http://blog.bigcircle.nl
 */
+
+// taking care of translations
+$plugin_dir = plugin_basename( dirname( __FILE__ ) .'/languages' );
+load_plugin_textdomain( 'all-related-posts', null, $plugin_dir );
 
 function load_arp_related_posts() 
 {
@@ -35,7 +39,6 @@ function arp_set_cookie()
 		}
 	
 	}
-	//get_bloginfo('url')
 }
 
 add_action( 'send_headers', 'arp_set_cookie' );
@@ -86,42 +89,42 @@ class arp_related_posts extends WP_Widget {
 	{
 
 		/* Set up some default widget settings. */
-		$defaults = array( 'title' => __('You might be interested in this', 'arp_related_posts'), 'postcount' => '5', 'type' => '*', 'excludewords'=>$_SERVER['HTTP_HOST'],'incprevisit'=>'true', 'incpostrel'=>'true','incsefull'=>'true','incsetags'=>'true');
+		$defaults = array( 'title' => __('You might be interested in this', 'all-related-posts'), 'postcount' => '5', 'type' => '*', 'excludewords'=>$_SERVER['HTTP_HOST'],'incprevisit'=>'true', 'incpostrel'=>'true','incsefull'=>'true','incsetags'=>'true');
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 		
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'arp_related_posts'); ?></label><br />
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'all-related-posts'); ?></label><br />
 			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" size="30" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'type' ); ?>"><?php _e('Search Pages or posts:', 'arp_related_posts'); ?></label><br />
+			<label for="<?php echo $this->get_field_id( 'type' ); ?>"><?php _e('Search Pages or posts:', 'all-related-posts'); ?></label><br />
 			<select id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>[select_value]">
-      			<option value="*" <?php if (empty($instance['type'])||$instance['type']=='*') echo "selected";   ?> ><?php _e('Posts and pages'); ?></option>
-      			<option value="post" <?php if ($instance['type'] == 'post') echo 'selected'; ?>><?php _e('Posts only'); ?></option>
-				<option value="page" <?php if ($instance['type'] == 'page') echo 'selected'; ?>><?php _e('Pages only'); ?></option>
+      			<option value="*" <?php if (empty($instance['type'])||$instance['type']=='*') echo "selected";   ?> ><?php _e('Posts and pages', 'all-related-posts'); ?></option>
+      			<option value="post" <?php if ($instance['type'] == 'post') echo 'selected'; ?>><?php _e('Posts only', 'all-related-posts'); ?></option>
+				<option value="page" <?php if ($instance['type'] == 'page') echo 'selected'; ?>><?php _e('Pages only', 'all-related-posts'); ?></option>
     		</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php _e('Number of links to show:', 'arp_related_posts'); ?></label><br />
+			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php _e('Number of links to show:', 'all-related-posts'); ?></label><br />
 			<input id="<?php echo $this->get_field_id( 'postcount' ); ?>" name="<?php echo $this->get_field_name( 'postcount' ); ?>" value="<?php echo $instance['postcount']; ?>" size="30" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'excludewords' ); ?>"><?php _e('Words to exclude in full search, separated by space. Put for example your blog\'s domain here:', 'arp_related_posts'); ?></label><br />
+			<label for="<?php echo $this->get_field_id( 'excludewords' ); ?>"><?php _e('Words to exclude in full search, separated by space. Put for example your blog\'s domain here:', 'all-related-posts'); ?></label><br />
 			<input id="<?php echo $this->get_field_id( 'excludewords' ); ?>" name="<?php echo $this->get_field_name( 'excludewords' ); ?>" value="<?php echo $instance['excludewords']; ?>" size="30" />
 		</p>
-		<p>Include:
+		<p><?php _e('Include:', 'all-related-posts'); ?>
 		<br />
 			<input class="checkbox" type="checkbox" <?php if ($instance['incprevisit']) echo 'checked="'.$instance['incprevisit'].'"'; ?> id="<?php echo $this->get_field_id('incprevisit'); ?>" name="<?php echo $this->get_field_name('incprevisit'); ?>" />
-			<label for="<?php echo $this->get_field_id('incprevisit'); ?>">the first post a visitor came to on his previous visit</label>
+			<label for="<?php echo $this->get_field_id('incprevisit'); ?>"><?php _e('the first post a visitor came to on his previous visit', 'all-related-posts'); ?></label>
 		<br />
 			<input class="checkbox" type="checkbox" <?php if ($instance['incpostrel']) echo 'checked="'.$instance['incpostrel'].'"'; ?> id="<?php echo $this->get_field_id('incpostrel'); ?>" name="<?php echo $this->get_field_name('incpostrel'); ?>" />
-			<label for="<?php echo $this->get_field_id('incpostrel'); ?>">posts related to the shown post</label>
+			<label for="<?php echo $this->get_field_id('incpostrel'); ?>"><?php _e('posts related to the shown post', 'all-related-posts'); ?></label>
 		<br />
 			<input class="checkbox" type="checkbox" <?php if ($instance['incsetags']) echo 'checked="'.$instance['incsetags'].'"'; ?> id="<?php echo $this->get_field_id('incsetags'); ?>" name="<?php echo $this->get_field_name('incsetags'); ?>" />
-			<label for="<?php echo $this->get_field_id('incsetags'); ?>">posts related to seach engine terms (tags and categories)</label>
+			<label for="<?php echo $this->get_field_id('incsetags'); ?>"><?php _e('posts related to seach engine terms (tags and categories)', 'all-related-posts'); ?></label>
 		<br />
 			<input class="checkbox" type="checkbox" <?php if ($instance['incsefull']) echo 'checked="'.$instance['incsefull'].'"'; ?> id="<?php echo $this->get_field_id('incsefull'); ?>" name="<?php echo $this->get_field_name('incsefull'); ?>" />
-			<label for="<?php echo $this->get_field_id('incsefull'); ?>">posts related to seach engine terms (full post content)</label>
+			<label for="<?php echo $this->get_field_id('incsefull'); ?>"><?php _e('posts related to seach engine terms (full post content)', 'all-related-posts'); ?></label>
 		</p>
 		<?php
 	}
@@ -223,6 +226,7 @@ class arp_related_posts extends WP_Widget {
 	function related_tag_posts($type)
 	{
 		$tags = get_the_tags(get_the_ID());
+		$cats = get_the_category(get_the_ID());
 		$ret = array();
 		if (!is_single()) return $ret;
 		if (!is_array($tags) || count($tags) == 0) return $ret; 
@@ -231,21 +235,26 @@ class arp_related_posts extends WP_Widget {
 		
 		// typical query:
 		// SELECT wp_posts.ID, wp_terms.name from wp_posts, wp_terms, wp_term_relationships where (wp_posts.ID = wp_term_relationships.object_id) AND (wp_term_relationships.term_taxonomy_id = wp_terms.term_id ) AND (wp_posts.post_type='post' OR wp_posts.post_type='page') AND wp_posts.post_status = 'publish' AND wp_posts.ID <> 532 AND LCASE(wp_terms.name) = 'psychology' ORDER BY ID DESC 
-		$query = "SELECT ".$wpdb->posts.".ID from ".$wpdb->posts.", ".$wpdb->terms.", ".$wpdb->term_relationships ." where (".$wpdb->posts.".ID = ".$wpdb->term_relationships .".object_id) AND (".$wpdb->term_relationships .".term_taxonomy_id = ".$wpdb->terms.".term_id ) AND (".$wpdb->posts.".post_type='post' OR ".$wpdb->posts.".post_type='page') AND ".$wpdb->posts.".post_status = 'publish' "; 
+		$query = "SELECT ".$wpdb->posts.".ID AS postid, count(".$wpdb->terms.".name) FROM ".$wpdb->posts.", ".$wpdb->terms.", ".$wpdb->term_relationships ." where (".$wpdb->posts.".ID = ".$wpdb->term_relationships .".object_id) AND (".$wpdb->term_relationships .".term_taxonomy_id = ".$wpdb->terms.".term_id ) AND (".$wpdb->posts.".post_type='post' OR ".$wpdb->posts.".post_type='page') AND ".$wpdb->posts.".post_status = 'publish' "; 
 		$tags_where = array();
 		foreach ($tags as $k=>$v)
 		{
-			$tags_where[] = "(".$wpdb->terms.".term_id LIKE '%".$v->term_id."%') ";
+			$tags_where[] = "(".$wpdb->terms.".name = '".$v->name."') ";
 		}
+		foreach ($cats as $k=>$v)
+		{
+			$tags_where[] = "(".$wpdb->terms.".name = '".$v->cat_name."') ";
+		}
+		
 		$tags_where_txt = join(' OR ', $tags_where);
 		if ($tags_where_txt != '') { $query .= ' AND ('.$tags_where_txt.') '; } else return $ret;
 		$thisid = get_the_ID();
-		$query .= "AND ".$wpdb->posts.".ID <> ".$thisid." ORDER BY ID DESC";
-		
-		//echo $query;
+		$query .= "AND ".$wpdb->posts.".ID <> ".$thisid." group by ".$wpdb->posts.".ID,".$wpdb->posts.".post_title ORDER BY count(".$wpdb->terms.".name) DESC";
 		
 		// time to execute the select to get a list of 
 		$pageposts = $wpdb->get_col($query,0);
+		
+		$ret[]=$query;
 		
 		if ($pageposts) {
 			foreach ($pageposts as $ID) { 
