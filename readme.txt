@@ -16,6 +16,7 @@ This plugin combines functionality from several other plugins that show related 
 It looks for related posts in the order indicated below until it has found a per widget specified number of relevant posts.
 
 The widget can be configured to show one or more of the following:
+
 *   **The first post a visitor came to on a previous visit**: This is based on the assumption that he previously followed a relevant link from a search engine or other website. If he returns now, he might be looking for it again.
 *   **Posts related to seach engine search terms (tags and categories)**: This is based on the assumption that tags and categories corresponding to a user's search terms are relevant.
 *   **Posts related to the shown post**: This is based on the assumption that tags and categories are indicative for related posts. Better tagging will result in better related posts.
