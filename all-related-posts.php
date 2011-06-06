@@ -4,7 +4,7 @@ Plugin Name: All Related Posts
 Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
 Description: Provides useful related links based on the visitor's browsing behavior
 Author: Maarten Swemmer
-Version: 1.0
+Version: 1.0.1
 Author URI: http://blog.bigcircle.nl
 */
 
@@ -254,7 +254,7 @@ class arp_related_posts extends WP_Widget {
 		// time to execute the select to get a list of 
 		$pageposts = $wpdb->get_col($query,0);
 		
-		$ret[]=$query;
+		//$ret[]=$query;
 		
 		if ($pageposts) {
 			foreach ($pageposts as $ID) { 

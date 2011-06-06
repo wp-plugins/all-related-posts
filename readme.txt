@@ -1,7 +1,7 @@
 === All Related Posts ===
 Tags: Google, Yahoo, Bing, AOL, Ask, Baidu, related posts, seo, search, tags, read posts, previous, behavioral targeting, related posts, relevant posts, pages
 Donate link: blog.bigcircle.nl
-Stable tag: 1.0
+Stable tag: 1.0.1
 Requires at least: 3.0
 Tested up to: 3.1.3
 Contributors: maartenjs
@@ -50,6 +50,9 @@ If no relevant posts or pages are found, no widget is shown.
 * Improved algoritm to find the most relevant posts related to the current post.
 * Added translation support for Widget settings page. 
 * Added Dutch and Traditional Chinese translations
+
+= 1.0.1 =
+* Removed accidental debugging functionality
 
 == Support ==
 To see how and that it works, do the following:
