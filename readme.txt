@@ -49,10 +49,10 @@ If no relevant posts or pages are found, no widget is shown.
 = 1.0 =
 * Improved algoritm to find the most relevant posts related to the current post.
 * Added translation support for Widget settings page. 
-* Added Dutch and Traditional Chinese translations
+* Added Dutch and Traditional Chinese translations.
 
 = 1.0.1 =
-* Removed accidental debugging functionality
+* Fixed showing debug info.
 
 == Support ==
 To see how and that it works, do the following:
