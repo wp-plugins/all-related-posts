@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rotate Blogname\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-05 17:27+0800\n"
-"PO-Revision-Date: 2011-06-05 17:28+0800\n"
+"POT-Creation-Date: 2011-07-10 16:35+0800\n"
+"PO-Revision-Date: 2011-07-10 16:35+0800\n"
 "Last-Translator: Maarten Swemmer <translations@bigcircle.eu>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -75,4 +75,20 @@ msgstr "搜尋工具術語相關文章(標籤和分類)"
 #: E:\Websites\bigcircle.nl\blog\wp-content\plugins\all-related-posts/all-related-posts.php:127
 msgid "posts related to seach engine terms (full post content)"
 msgstr "搜尋工具術語相關文章(全文)"
+
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\all-related-posts/all-related-posts.php:130
+msgid "Like this plugin? A"
+msgstr "喜歡嗎?"
+
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\all-related-posts/all-related-posts.php:130
+msgid "small donation"
+msgstr "你的捐款"
+
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\all-related-posts/all-related-posts.php:130
+msgid "is highly appreciated."
+msgstr "是我們的鼓勵"
+
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\all-related-posts/all-related-posts.php:443
+msgid "Donate"
+msgstr "捐款"
 

@@ -4,7 +4,7 @@ Plugin Name: All Related Posts
 Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
 Description: Provides useful related links based on the visitor's browsing behavior
 Author: Maarten Swemmer
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://blog.bigcircle.nl
 */
 
@@ -126,6 +126,8 @@ class arp_related_posts extends WP_Widget {
 			<input class="checkbox" type="checkbox" <?php if ($instance['incsefull']) echo 'checked="'.$instance['incsefull'].'"'; ?> id="<?php echo $this->get_field_id('incsefull'); ?>" name="<?php echo $this->get_field_name('incsefull'); ?>" />
 			<label for="<?php echo $this->get_field_id('incsefull'); ?>"><?php _e('posts related to seach engine terms (full post content)', 'all-related-posts'); ?></label>
 		</p>
+		<hr>
+		<div style="text-align:right;font-size:0.8em"><?php _e('Like this plugin? A', 'all-related-posts'); ?> <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=79AKXNVRT8YSQ&lc=NL&item_name=All%20Related%20Posts%20plugin%20by%20Maarten&item_number=All%20Related%20Posts%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank"><?php _e('small donation', 'all-related-posts'); ?></a> <?php _e('is highly appreciated.', 'all-related-posts'); ?><p></div>
 		<?php
 	}
 	
@@ -431,5 +433,19 @@ class arp_related_post
 	}
 
 }
+
+function arp_add_donate_link($links, $file) 
+{
+	static $this_plugin;
+	if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
+	if ($file == $this_plugin)
+	{
+		$donate_link = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=79AKXNVRT8YSQ&lc=NL&item_name=All%20Related%20Posts%20plugin%20by%20Maarten&item_number=All%20Related%20Posts%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank">'.__('Donate', 'all-related-posts').'</a>';
+		$links[] = $donate_link;
+	}
+	return $links;
+}
+
+add_filter('plugin_row_meta', 'arp_add_donate_link', 10, 2 );
 
 ?>

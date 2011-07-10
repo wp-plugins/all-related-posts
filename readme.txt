@@ -1,9 +1,9 @@
 === All Related Posts ===
-Tags: Google, Yahoo, Bing, AOL, Ask, Baidu, related posts, seo, search, tags, read posts, previous, behavioral targeting, related posts, relevant posts, pages
-Donate link: blog.bigcircle.nl
-Stable tag: 1.0.1
+Tags: Google, Yahoo, Bing, AOL, Ask, Baidu, related posts, widget, multiple widgets, seo, search, tags, read posts, previous, behavioral targeting, related posts, relevant posts, pages
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=79AKXNVRT8YSQ&lc=NL&item_name=All%20Related%20Posts%20plugin%20by%20Maarten&item_number=All%20Related%20Posts%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Stable tag: 1.0.2
 Requires at least: 3.0
-Tested up to: 3.1.3
+Tested up to: 3.2
 Contributors: maartenjs
 
 Displays some related / relevant posts based on search engine terms, current post and previously viewed posts.
@@ -53,6 +53,9 @@ If no relevant posts or pages are found, no widget is shown.
 
 = 1.0.1 =
 * Fixed showing debug info.
+
+= 1.0.2 =
+* Confirmed compatibility with Wordpress 3.2
 
 == Support ==
 To see how and that it works, do the following:
