@@ -4,7 +4,7 @@ Plugin Name: All Related Posts
 Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
 Description: Provides useful related links based on the visitor's browsing behavior
 Author: Maarten Swemmer
-Version: 1.0.2
+Version: 1.0.3
 Author URI: http://blog.bigcircle.nl
 */
 
@@ -16,7 +16,6 @@ function load_arp_related_posts()
 {
 	register_widget( 'arp_related_posts' );
 }
-
 add_action( 'widgets_init', 'load_arp_related_posts' );
 
 function arp_set_cookie()
@@ -37,12 +36,9 @@ function arp_set_cookie()
 		{
 			setcookie("arp_ts_fp", $uri, time()+15756926 , "/", $strippeddomain ); // the first page is only stored if the session cookie was not yet stored (which means it's the first page)
 		}
-	
 	}
 }
-
 add_action( 'send_headers', 'arp_set_cookie' );
-
 
 class arp_related_posts extends WP_Widget {
 
@@ -126,6 +122,7 @@ class arp_related_posts extends WP_Widget {
 			<input class="checkbox" type="checkbox" <?php if ($instance['incsefull']) echo 'checked="'.$instance['incsefull'].'"'; ?> id="<?php echo $this->get_field_id('incsefull'); ?>" name="<?php echo $this->get_field_name('incsefull'); ?>" />
 			<label for="<?php echo $this->get_field_id('incsefull'); ?>"><?php _e('posts related to seach engine terms (full post content)', 'all-related-posts'); ?></label>
 		</p>
+		<p>Note: If no related posts are found for a post or page, no widget will be displayed.</p>
 		<hr>
 		<div style="text-align:right;font-size:0.8em"><?php _e('Like this plugin? A', 'all-related-posts'); ?> <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=79AKXNVRT8YSQ&lc=NL&item_name=All%20Related%20Posts%20plugin%20by%20Maarten&item_number=All%20Related%20Posts%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank"><?php _e('small donation', 'all-related-posts'); ?></a> <?php _e('is highly appreciated.', 'all-related-posts'); ?><p></div>
 		<?php
@@ -230,7 +227,7 @@ class arp_related_posts extends WP_Widget {
 		$tags = get_the_tags(get_the_ID());
 		$cats = get_the_category(get_the_ID());
 		$ret = array();
-		if (!is_single()) return $ret;
+		if (!is_single()) return $ret; // Only relevant when a single post or page is requested
 		if (!is_array($tags) || count($tags) == 0) return $ret; 
 		global $wpdb;
 		global $wp_query;		
@@ -409,8 +406,7 @@ class arp_related_posts extends WP_Widget {
 		
 		return $qs;
 	}
-	
-	
+		
 }
 
 class arp_related_post

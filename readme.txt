@@ -1,9 +1,9 @@
 === All Related Posts ===
 Tags: Google, Yahoo, Bing, AOL, Ask, Baidu, related posts, widget, multiple widgets, seo, search, tags, read posts, previous, behavioral targeting, related posts, relevant posts, pages
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=79AKXNVRT8YSQ&lc=NL&item_name=All%20Related%20Posts%20plugin%20by%20Maarten&item_number=All%20Related%20Posts%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires at least: 3.0
-Tested up to: 3.2
+Tested up to: 3.5.1
 Contributors: maartenjs
 
 Displays some related / relevant posts based on search engine terms, current post and previously viewed posts.
@@ -24,7 +24,13 @@ The widget can be configured to show one or more of the following:
 
 Multiple widgets are supported, enabling you to show different groups of links for different scenarios with different titles.
 
-If no relevant posts or pages are found, no widget is shown.
+**Note: If no relevant posts or pages are found, no widget is shown.**
+
+The admin interface supports the following translations:
+
+*   Dutch (nl_NL)
+*   Slovak (sk_SK) (thanks to Branco Radenovich, WebHostingGeeks.com)
+*   Traditional Chinese (zh_TW)
 
 == Installation ==
 1. Download the plugin.
@@ -40,22 +46,27 @@ If no relevant posts or pages are found, no widget is shown.
 
 == Changelog ==
 
-= 0.9 =
-* Initial release 
+= 1.0.3 =
+* Tested compatibility up to Wordpress 3.5.1 
+* Making it more clear in the admin interface that no widget will be shown when no related posst are found.
+* Translation added: Slovak (sk_SK) (thanks to Branco Radenovich, WebHostingGeeks.com)
 
-= 0.9.1 =
-* Corrected an issue in one of the database queries. Now supports any wordpress database prefix.
-
-= 1.0 =
-* Improved algoritm to find the most relevant posts related to the current post.
-* Added translation support for Widget settings page. 
-* Added Dutch and Traditional Chinese translations.
+= 1.0.2 =
+* Confirmed compatibility with Wordpress 3.2
 
 = 1.0.1 =
 * Fixed showing debug info.
 
-= 1.0.2 =
-* Confirmed compatibility with Wordpress 3.2
+= 1.0 =
+* Improved algoritm to find the most relevant posts related to the current post.
+* Added translation support for Widget settings page. 
+* Added Dutch (nl_NL) and Traditional Chinese (zh_TW) translations.
+
+= 0.9.1 =
+* Corrected an issue in one of the database queries. Now supports any wordpress database prefix.
+
+= 0.9 =
+* Initial release 
 
 == Support ==
 To see how and that it works, do the following:
