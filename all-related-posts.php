@@ -4,7 +4,7 @@ Plugin Name: All Related Posts
 Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
 Description: Provides useful related links based on the visitor's browsing behavior
 Author: Maarten Swemmer
-Version: 1.0.3
+Version: 1.0.4
 Author URI: http://blog.bigcircle.nl
 */
 
@@ -45,7 +45,7 @@ class arp_related_posts extends WP_Widget {
 	/**
 	 * Widget setup.
 	 */
-	function arp_related_posts() 
+	function __construct() 
 	{
 		/* Widget settings. */
 		$widget_ops = array( 'description' => __('A widget that displays related posts.', 'arp_related_posts') );
@@ -54,7 +54,7 @@ class arp_related_posts extends WP_Widget {
 		$control_ops = array( 'width' => 400, 'height' => 350, 'id_base' => 'arp_related_posts' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'arp_related_posts', __('All Related Posts', 'arp_related_posts'), $widget_ops, $control_ops );
+		parent::__construct( 'arp_related_posts', __('All Related Posts', 'arp_related_posts'), $widget_ops, $control_ops );
 	}
 	
 	/**
